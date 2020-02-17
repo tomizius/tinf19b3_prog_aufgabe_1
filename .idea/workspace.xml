@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Uebung_14_02_2020" targetName="Uebung_14_02_2020" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8843f654-f169-4788-9d81-05ae11383a49" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1XnPMvZHFva2BZgdN776LZ0HTCn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Uebung_14_02_2020" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Uebung_14_02_2020" TARGET_NAME="Uebung_14_02_2020" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Uebung_14_02_2020" RUN_TARGET_NAME="Uebung_14_02_2020">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8843f654-f169-4788-9d81-05ae11383a49" name="Default Changelist" comment="" />
+      <created>1581678840231</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581678840231</updated>
+      <workItem from="1581678841717" duration="1714000" />
+      <workItem from="1581958204641" duration="1039000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="40" y="95" width="870" height="923" key="CommitChangelistDialog2" timestamp="1581958986872">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="40" y="95" width="870" height="923" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1581958986872" />
+    <state width="914" height="340" key="GridCell.Tab.0.bottom" timestamp="1581680555155">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555155" />
+    <state width="914" height="340" key="GridCell.Tab.0.center" timestamp="1581680555154">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555154" />
+    <state width="914" height="340" key="GridCell.Tab.0.left" timestamp="1581680555153">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555153" />
+    <state width="914" height="340" key="GridCell.Tab.0.right" timestamp="1581680555154">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555154" />
+    <state width="914" height="340" key="GridCell.Tab.1.bottom" timestamp="1581680555157">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555157" />
+    <state width="914" height="340" key="GridCell.Tab.1.center" timestamp="1581680555156">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555156" />
+    <state width="914" height="340" key="GridCell.Tab.1.left" timestamp="1581680555155">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555155" />
+    <state width="914" height="340" key="GridCell.Tab.1.right" timestamp="1581680555156">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="914" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1581680555156" />
+    <state x="621" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1581958348640">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="621" y="381" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1581958348640" />
+  </component>
+</project>
