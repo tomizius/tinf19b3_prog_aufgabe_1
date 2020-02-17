@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int arg, char *argv[]) {
+int main(int argc, char *argv[]) {
 
     FILE *file = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
     if (file == NULL){
@@ -25,10 +25,20 @@ int main(int arg, char *argv[]) {
         }
     }
 
+    int usedOption = argv[1][1];
+
+    if (usedOption == 104){
+        printf("\n\nSie haben die Hilfe gewählt! \n");
+    } else if (usedOption == 98){
+        printf("\n\nSie haben die Großbuchstaben-Variante gewählt! \n");
+    } else if (usedOption == 115){
+        printf("\n\nSie haben die Kleinbuchstaben-Variante gewählt! \n");
+    } else if (usedOption == 119){
+        printf("\n\nSie haben die word-Variante gewählt! \n");
+    } else {
+        printf("\nFALSCHE EINGABE\n");
+    }
     printf("\nAnzahl der Characters in der Text-Datei: %i\n", characterCounter);
-
-    printf("\nUebergabe: %s \n", argv[1]);
-
 
     return 0;
 }
