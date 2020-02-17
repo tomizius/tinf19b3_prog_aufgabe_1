@@ -12,7 +12,7 @@ void validateUserInput(int inputChar){
     } else if (inputChar == 119){
         printf("\n\nSie haben die word-Variante gewählt! \n");
     } else {
-        printf("\nFALSCHE EINGABE\n");
+        printf("\nUsage: ./main.c {-h for help|-b|-s|-c \"word\"}\n");
     }
 }
 
