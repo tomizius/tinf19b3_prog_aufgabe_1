@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <string.h>
+int checkFirstChar;
 int usedOption;
 
-void validateUserInput(int inputChar){
-    if (inputChar == 104){
+
+void validateUserInput(int firstInputChar, int secondInputChar){
+    if (firstInputChar == 45 && secondInputChar == 104){
         printf("\n\nSie haben die Hilfe gewählt! \n");
-    } else if (inputChar == 98){
+    } else if (firstInputChar == 45 && secondInputChar == 98){
         printf("\n\nSie haben die Großbuchstaben-Variante gewählt! \n");
-    } else if (inputChar == 115){
+    } else if (firstInputChar == 45 && secondInputChar == 115){
         printf("\n\nSie haben die Kleinbuchstaben-Variante gewählt! \n");
-    } else if (inputChar == 119){
+    } else if (firstInputChar == 45 && secondInputChar == 119){
         printf("\n\nSie haben die word-Variante gewählt! \n");
     } else {
         printf("\nUsage: ./main.c {-h for help|-b|-s|-c \"word\"}\n");
@@ -18,8 +20,12 @@ void validateUserInput(int inputChar){
 
 int main(int argc, char *argv[]) {
 
+    checkFirstChar = argv[1][0];
+
+    printf("FIRST LETTER %d\n\n", checkFirstChar);
+
     usedOption = argv[1][1];
-    validateUserInput(usedOption);
+    validateUserInput(checkFirstChar, usedOption);
 
     FILE *file = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
     if (file == NULL){
