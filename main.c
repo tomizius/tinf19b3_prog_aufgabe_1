@@ -7,10 +7,11 @@ int choosedOption;
 
 char characterInFile;
 int lowerCaseCounter = 0;
+int upperCaseCounter = 0;
 
 int spaceAndReturnCounter = 0;
 
-int feedback = 0;
+int programmResult = 0;
 
 int validateUserInput(int firstInputChar, int secondInputChar){
     if (firstInputChar == 45 && secondInputChar == 104){
@@ -38,6 +39,17 @@ void printHelp(){
 }
 
 int countUpperCases(FILE *file){
+    int lowestCase = 65;
+    int biggestUpperCase = 90;
+    while((characterInFile = getc(file)) != EOF ) {
+        if (characterInFile >= lowestCase && characterInFile <= biggestUpperCase){
+            upperCaseCounter++;
+        }
+    }
+    return upperCaseCounter;
+}
+
+int countLowerCases(FILE *file){
     int lowestCase = 97;
     int biggestLowerCase = 122;
     while((characterInFile = getc(file)) != EOF ) {
@@ -46,10 +58,6 @@ int countUpperCases(FILE *file){
         }
     }
     return lowerCaseCounter;
-}
-
-int countLowerCases(FILE *file){
-
 }
 
 int wordIsInFile(){
@@ -73,9 +81,11 @@ int main(int argc, char *argv[]) {
     if (choosedOption == 104){
         printHelp();
     } else if (choosedOption == 98){
-        feedback = countUpperCases(file);
-        printf("\nEs befinden sich %d Kleinbuchstaben in der Datei.\n", feedback);
+        programmResult = countUpperCases(file);
+        printf("\nEs befinden sich %d Grossbuchstaben in der Datei.\n", programmResult);
     } else if (choosedOption == 115){
+        programmResult = countLowerCases(file);
+        printf("\nEs befinden sich %d Kleinbuchstaben in der Datei.\n", programmResult);
     } else if (choosedOption == 119){
 
     }
