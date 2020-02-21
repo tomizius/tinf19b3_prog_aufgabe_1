@@ -13,6 +13,11 @@ char temp[512];
 int numberOfWordMatchesInFile = 0;
 int programmResult = 0;
 
+
+void printUsage(){
+    printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+}
+
 int validateUserInput(int firstInputChar, int secondInputChar){
     if (firstInputChar == 45 && secondInputChar == 104){
         return secondInputChar;
@@ -23,13 +28,13 @@ int validateUserInput(int firstInputChar, int secondInputChar){
     } else if (firstInputChar == 45 && secondInputChar == 99){
         return secondInputChar;
     } else {
-        printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+        printUsage();
         exit(1);
     }
 }
 void printHelp(){
     printf("\n====================\t HELPPAGE \t==================\n");
-    printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+    printUsage();
     printf("OPTIONS:\n");
     printf("-b: count all upper cases in the choosed file.\n");
     printf("-s: count all lowercases in the choosed file. \n");
@@ -71,8 +76,14 @@ int wordIsInFile(FILE *file, char *wordWhichIsToFind){
 
 int main(int argc, char *argv[]) {
 
-    checkFirstChar = argv[1][0];
-    usedOption = argv[1][1];
+    if (argc > 1){
+        checkFirstChar = argv[1][0];
+        usedOption = argv[1][1];
+    }else{
+        printUsage();
+        exit(1);
+    }
+
 
     FILE *readFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
     if (readFile == NULL){
@@ -106,7 +117,7 @@ int main(int argc, char *argv[]) {
         if (argc > 2){
             wordToFind = argv[2];
         } else {
-            printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+            printUsage();
             exit(1);
         }
         programmResult = wordIsInFile(readFile, wordToFind);
@@ -120,7 +131,6 @@ int main(int argc, char *argv[]) {
         }
         printf("### write result to result.txt ###\n");
     }
-
 
     fclose(readFile);
     fclose(writeFile);
