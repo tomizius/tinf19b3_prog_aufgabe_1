@@ -85,15 +85,15 @@ int main(int argc, char *argv[]) {
     }
 
 
-    FILE *readFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
+    FILE *readFile = fopen("", "r");
     if (readFile == NULL){
-        printf("Readable file not found!\n");
+        printf("Readable file not found!\n Correct path to file?? \n");
         exit(1);
     }
 
-    FILE *writeFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/result.txt", "w");
+    FILE *writeFile = fopen("", "w");
     if (writeFile == NULL){
-        printf("Writeable file not found!\n");
+        printf("Writeable file not found!\n Correct path to file?? \n");
         exit(1);
     }
 
