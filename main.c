@@ -71,11 +71,9 @@ int wordIsInFile(FILE *file, char *wordWhichIsToFind){
 
 int main(int argc, char *argv[]) {
 
-    printf("### Start ###\n");
     checkFirstChar = argv[1][0];
     usedOption = argv[1][1];
 
-    printf("### trying opening files ###\n");
     FILE *readFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
     if (readFile == NULL){
         printf("Readable file not found!\n");
@@ -88,7 +86,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    printf("### validate your choice ###\n");
     choosedOption = validateUserInput(checkFirstChar, usedOption);
 
     if (choosedOption == 104){
@@ -98,11 +95,13 @@ int main(int argc, char *argv[]) {
         char result[] = "Es befinden sich folgende Anzahl an Grossbuchstaben in der Datei: ";
         fputs(result, writeFile);
         fprintf(writeFile, "%d", programmResult);
+        printf("### write result to result.txt ###\n");
     } else if (choosedOption == 115){
         programmResult = countLowerCases(readFile);
         char result[] = "Es befinden sich folgende Anzahl an Kleinbuchstaben in der Datei: ";
         fputs(result, writeFile);
         fprintf(writeFile, "%d", programmResult);
+        printf("### write result to result.txt ###\n");
     } else if (choosedOption == 99){
         if (argc > 2){
             wordToFind = argv[2];
@@ -116,12 +115,12 @@ int main(int argc, char *argv[]) {
             fputs(result, writeFile);
             fprintf(writeFile, "%d", programmResult);
         } else{
-            char result[] = "Das Wort befindet sich nicht in der Datei: ";
+            char result[] = "Das Wort befindet sich nicht in der Datei! ";
             fputs(result, writeFile);
         }
+        printf("### write result to result.txt ###\n");
     }
 
-    printf("### write result to result.txt ###\n");
 
     fclose(readFile);
     fclose(writeFile);
