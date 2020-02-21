@@ -10,6 +10,9 @@ If you are on Linux, you can just run
 
 `./nameOfYourExcuteableFile`
 
+You need to change the file paths in the C-code to run
+it on your system.
+
 ## usage
 
 just run following command to see all usages:
