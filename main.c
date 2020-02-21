@@ -4,13 +4,13 @@
 int checkFirstChar;
 int usedOption;
 int choosedOption;
+char *wordToFind;
 
 char characterInFile;
 int lowerCaseCounter = 0;
 int upperCaseCounter = 0;
-
-int spaceAndReturnCounter = 0;
-
+char temp[512];
+int numberOfWordMatchesInFile = 0;
 int programmResult = 0;
 
 int validateUserInput(int firstInputChar, int secondInputChar){
@@ -20,16 +20,16 @@ int validateUserInput(int firstInputChar, int secondInputChar){
         return secondInputChar;
     } else if (firstInputChar == 45 && secondInputChar == 115){
         return secondInputChar;
-    } else if (firstInputChar == 45 && secondInputChar == 119){
+    } else if (firstInputChar == 45 && secondInputChar == 99){
         return secondInputChar;
     } else {
-        printf("\nUsage: ./main.c {-h for help|-b|-s|-c \"word\"}\n");
+        printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
         exit(1);
     }
 }
 void printHelp(){
     printf("\n====================\t HELPPAGE \t==================\n");
-    printf("\nUsage: ./main.c [Options] \n");
+    printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
     printf("OPTIONS:\n");
     printf("-b: count all upper cases in the choosed file.\n");
     printf("-s: count all lowercases in the choosed file. \n");
@@ -60,42 +60,70 @@ int countLowerCases(FILE *file){
     return lowerCaseCounter;
 }
 
-int wordIsInFile(){
-
+int wordIsInFile(FILE *file, char *wordWhichIsToFind){
+    while(fgets(temp, 512, file) != NULL) {
+        if((strstr(temp, wordWhichIsToFind)) != NULL) {
+            numberOfWordMatchesInFile++;
+        }
+    }
+    return numberOfWordMatchesInFile;
 }
 
 int main(int argc, char *argv[]) {
 
+    printf("### Start ###\n");
     checkFirstChar = argv[1][0];
     usedOption = argv[1][1];
 
-    FILE *file = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
-    if (file == NULL){
-        printf("Datei nicht gefunden\n");
+    printf("### trying opening files ###\n");
+    FILE *readFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/characters.txt", "r");
+    if (readFile == NULL){
+        printf("Readable file not found!\n");
         exit(1);
     }
 
+    FILE *writeFile = fopen("/home/thomas/CLionProjects/Uebung_14_02_2020/result.txt", "w");
+    if (writeFile == NULL){
+        printf("Writeable file not found!\n");
+        exit(1);
+    }
 
+    printf("### validate your choice ###\n");
     choosedOption = validateUserInput(checkFirstChar, usedOption);
 
     if (choosedOption == 104){
         printHelp();
     } else if (choosedOption == 98){
-        programmResult = countUpperCases(file);
-        printf("\nEs befinden sich %d Grossbuchstaben in der Datei.\n", programmResult);
+        programmResult = countUpperCases(readFile);
+        char result[] = "Es befinden sich folgende Anzahl an Grossbuchstaben in der Datei: ";
+        fputs(result, writeFile);
+        fprintf(writeFile, "%d", programmResult);
     } else if (choosedOption == 115){
-        programmResult = countLowerCases(file);
-        printf("\nEs befinden sich %d Kleinbuchstaben in der Datei.\n", programmResult);
-    } else if (choosedOption == 119){
-
+        programmResult = countLowerCases(readFile);
+        char result[] = "Es befinden sich folgende Anzahl an Kleinbuchstaben in der Datei: ";
+        fputs(result, writeFile);
+        fprintf(writeFile, "%d", programmResult);
+    } else if (choosedOption == 99){
+        if (argc > 2){
+            wordToFind = argv[2];
+        } else {
+            printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+            exit(1);
+        }
+        programmResult = wordIsInFile(readFile, wordToFind);
+        if (programmResult > 0){
+            char result[] = "Das Wort befindet sich folgende Anzahl in der Datei: ";
+            fputs(result, writeFile);
+            fprintf(writeFile, "%d", programmResult);
+        } else{
+            char result[] = "Das Wort befindet sich nicht in der Datei: ";
+            fputs(result, writeFile);
+        }
     }
 
-    printf("\nFile content:\n");
+    printf("### write result to result.txt ###\n");
 
-
-
-
-    printf("\nAnzahl der Characters in der Text-Datei: %i\n", lowerCaseCounter);
-
+    fclose(readFile);
+    fclose(writeFile);
     return 0;
 }
