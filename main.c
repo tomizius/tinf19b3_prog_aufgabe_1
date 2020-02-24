@@ -76,6 +76,7 @@ int wordIsInFile(FILE *file, char *wordWhichIsToFind){
 
 int main(int argc, char *argv[]) {
 
+    //check how many parametes are given and print help if to many
     if (argc > 1 && argc < 4){
         checkFirstChar = argv[1][0];
         usedOption = argv[1][1];
@@ -96,9 +97,10 @@ int main(int argc, char *argv[]) {
         printf("Writeable file not found!\n Correct path to file?? \n");
         exit(1);
     }
-
+    //validate user input
     choosedOption = validateUserInput(checkFirstChar, usedOption);
 
+    //run chooses function
     if (choosedOption == 104){
         printHelp();
     } else if (choosedOption == 98){
