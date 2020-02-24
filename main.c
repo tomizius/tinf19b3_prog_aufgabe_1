@@ -14,7 +14,7 @@ char characterInFile;
 char temp[512];
 
 void printUsage(){
-    printf("\nUsage: ./main.c {-h for help|-b|-s|-c word}\n");
+    printf("\nUsage: ./main.c {-h for help|-b|-s|-c word} filename\n");
 }
 
 int validateUserInput(int firstInputChar, int secondInputChar){
@@ -34,19 +34,20 @@ int validateUserInput(int firstInputChar, int secondInputChar){
 void printHelp(){
     printf("\n====================\t HELPPAGE \t==================\n");
     printUsage();
-    printf("OPTIONS:\n");
-    printf("-b: count all upper cases in the choosed file.\n");
-    printf("-s: count all lowercases in the choosed file. \n");
-    printf("-c <word>:  check if word is in the file.\n");
+    printf("\nOPTIONS:\n");
+    printf("\t-h\t\tdisplay this page.\n");
+    printf("\t-b\t\tcount all upper cases in the choosen file.\n");
+    printf("\t-s\t\tcount all lowercases in the choosen file. \n");
+    printf("\t-c <word>\tcheck if word is in the file.\n");
     printf("\n====================\t HELPPAGE \t==================\n");
     exit(1);
 }
 
 int countUpperCases(FILE *file){
-    int lowestCase = 65;
+    int lowestUpperCase = 65;
     int biggestUpperCase = 90;
     while((characterInFile = getc(file)) != EOF ) {
-        if (characterInFile >= lowestCase && characterInFile <= biggestUpperCase){
+        if (characterInFile >= lowestUpperCase && characterInFile <= biggestUpperCase){
             upperCaseCounter++;
         }
     }
@@ -54,10 +55,10 @@ int countUpperCases(FILE *file){
 }
 
 int countLowerCases(FILE *file){
-    int lowestCase = 97;
+    int lowestLoewrCase = 97;
     int biggestLowerCase = 122;
     while((characterInFile = getc(file)) != EOF ) {
-        if (characterInFile >= lowestCase && characterInFile <= biggestLowerCase){
+        if (characterInFile >= lowestLoewrCase && characterInFile <= biggestLowerCase){
             lowerCaseCounter++;
         }
     }
@@ -76,7 +77,7 @@ int wordIsInFile(FILE *file, char *wordWhichIsToFind){
 int main(int argc, char *argv[]) {
 
     //check how many parametes are given and print help if to many
-    if (argc > 1 && argc < 4){
+    if (argc > 1 && argc < 5){
         checkFirstChar = argv[1][0];
         usedOption = argv[1][1];
     }else{
@@ -84,37 +85,43 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
+    //validate user input
+    choosenOption = validateUserInput(checkFirstChar, usedOption);
+    if (choosenOption == 104){
+        printHelp();
+    }
 
-    FILE *readFile = fopen("", "r");
+
+
+    char filename[512];
+    strcpy(filename, argv[argc-1]);
+
+    FILE *readFile = fopen(filename, "r");
     if (readFile == NULL){
         printf("Readable file not found!\n Correct path to file?? \n");
         exit(1);
     }
 
-    FILE *writeFile = fopen("", "w");
+    FILE *writeFile = fopen("results.txt", "w");
     if (writeFile == NULL){
         printf("Writeable file not found!\n Correct path to file?? \n");
         exit(1);
     }
-    //validate user input
-    choosedOption = validateUserInput(checkFirstChar, usedOption);
 
     //run chooses function
-    if (choosedOption == 104){
-        printHelp();
-    } else if (choosedOption == 98){
+     if (choosenOption == 98){
         programmResult = countUpperCases(readFile);
         char result[] = "Es befinden sich folgende Anzahl an Grossbuchstaben in der Datei: ";
         fputs(result, writeFile);
         fprintf(writeFile, "%d", programmResult);
         printf("### write result to result.txt ###\n");
-    } else if (choosedOption == 115){
+    } else if (choosenOption == 115){
         programmResult = countLowerCases(readFile);
         char result[] = "Es befinden sich folgende Anzahl an Kleinbuchstaben in der Datei: ";
         fputs(result, writeFile);
         fprintf(writeFile, "%d", programmResult);
         printf("### write result to result.txt ###\n");
-    } else if (choosedOption == 99){
+    } else if (choosenOption == 99){
         if (argc > 2){
             wordToFind = argv[2];
         } else {
