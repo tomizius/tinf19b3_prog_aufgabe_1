@@ -76,7 +76,7 @@ int wordIsInFile(FILE *file, char *wordWhichIsToFind){
 
 int main(int argc, char *argv[]) {
 
-    if (argc > 1){
+    if (argc > 1 && argc < 4){
         checkFirstChar = argv[1][0];
         usedOption = argv[1][1];
     }else{
