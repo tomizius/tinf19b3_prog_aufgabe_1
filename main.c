@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-int checkFirstChar;
-int usedOption;
-int choosenOption;
-char *wordToFind;
-
-char characterInFile;
+int checkFirstChar = 0;
+int usedOption = 0;
+int choosedOption = 0;
 int lowerCaseCounter = 0;
 int upperCaseCounter = 0;
-char temp[512];
 int numberOfWordMatchesInFile = 0;
 int programmResult = 0;
 
+char *wordToFind;
+char characterInFile;
+char temp[512];
 
 void printUsage(){
     printf("\nUsage: ./main.c {-h for help|-b|-s|-c word} filename\n");
