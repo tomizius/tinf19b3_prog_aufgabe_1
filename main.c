@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#define BUFFER_SIZE 1000
+
 int checkFirstChar = 0;
 int usedOption = 0;
 int choosenOption = 0;
@@ -11,7 +14,7 @@ int programmResult = 0;
 
 char *wordToFind;
 char characterInFile;
-char temp[512];
+char filename[512];
 
 void printUsage(){
     printf("\nUsage: ./main.c {-h for help|-b|-s|-c word} filename\n");
@@ -39,6 +42,7 @@ void printHelp(){
     printf("\t-b\t\tcount all upper cases in the choosen file.\n");
     printf("\t-s\t\tcount all lowercases in the choosen file. \n");
     printf("\t-c <word>\tcheck if word is in the file.\n");
+    printf("\t<filename>\tist the name of the file which you like to check.\n");
     printf("\n====================\t HELPPAGE \t==================\n");
     exit(1);
 }
@@ -66,8 +70,16 @@ int countLowerCases(FILE *file){
 }
 
 int wordIsInFile(FILE *file, char *wordWhichIsToFind){
-    while(fgets(temp, 512, file) != NULL) {
-        if((strstr(temp, wordWhichIsToFind)) != NULL) {
+    char fileString[BUFFER_SIZE];
+    char *pos;
+    int index;
+    // Read line from file till end of file.
+    while ((fgets(fileString, BUFFER_SIZE, file)) != NULL){
+        index = 0;
+        // Find next occurrence of word in fileString
+        while ((pos = strstr(fileString + index, wordWhichIsToFind)) != NULL){
+            // Index of word in fileString is Memory address of pos - memory address of fileString.
+            index = (pos - fileString) + 1;
             numberOfWordMatchesInFile++;
         }
     }
@@ -91,9 +103,6 @@ int main(int argc, char *argv[]) {
         printHelp();
     }
 
-
-
-    char filename[512];
     strcpy(filename, argv[argc-1]);
 
     FILE *readFile = fopen(filename, "r");
@@ -102,14 +111,14 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    FILE *writeFile = fopen("results.txt", "w");
+    FILE *writeFile = fopen("result.txt", "w");
     if (writeFile == NULL){
         printf("Writeable file not found!\n Correct path to file?? \n");
         exit(1);
     }
 
     //run chooses function
-     if (choosenOption == 98){
+    if (choosenOption == 98){
         programmResult = countUpperCases(readFile);
         char result[] = "Es befinden sich folgende Anzahl an Grossbuchstaben in der Datei: ";
         fputs(result, writeFile);
